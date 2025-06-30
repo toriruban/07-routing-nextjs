@@ -18,19 +18,19 @@ export const fetchNotes = async (
   if (page) params.page = page;
   if (tag) params.tag = tag;
 
-  const response = await axios.get<FetchNotesResponse>(
+  const { data } = await axios.get<FetchNotesResponse>(
     `${BASE_URL}/notes`,
     {
       params,
       headers: { Authorization: `Bearer ${API_TOKEN}` },
     }
   );
+
   return {
-    notes: response.data.notes ?? [],
-    totalPages: response.data.totalPages ?? 1,
+    notes:      data.notes      ?? [],
+    totalPages: data.totalPages ?? 1,
   };
 };
-
 export interface CreateNote {
   title: string;
   content?: string;

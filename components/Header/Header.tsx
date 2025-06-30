@@ -1,10 +1,8 @@
 import Link from 'next/link';
 import TagsMenu from '../TagsMenu/TagsMenu'
-import {getFilter} from '../../lib/api'
 import css from '../Header/Header.module.css';
 
 const Header = async () => {
-  // const filters =  await getFilter ();
     return (
         <header className={ css.header }>
         <Link href="/" aria-label="Home">
