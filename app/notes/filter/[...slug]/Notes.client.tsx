@@ -12,9 +12,10 @@ import { useDebounce } from 'use-debounce';
 
 type NotesClientProps = {
   initialData: FetchNotesResponse;
+  tag: string; 
 }
 
-const NotesClient = ({ initialData }: NotesClientProps) => {
+const NotesClient = ({ initialData, tag }: NotesClientProps) => {
   const [search, setSearch] = useState('');
   const [debouncedSearch] = useDebounce(search, 500);
   const [page, setPage] = useState(1);
@@ -22,7 +23,7 @@ const NotesClient = ({ initialData }: NotesClientProps) => {
 
   const { data } = useQuery<FetchNotesResponse>({
     queryKey: ['notes', debouncedSearch, page],
-    queryFn: () => fetchNotes(debouncedSearch, page),
+    queryFn: () => fetchNotes({search: debouncedSearch, page, tag}),
     placeholderData: keepPreviousData,
     initialData,
   });
