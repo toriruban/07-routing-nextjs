@@ -70,10 +70,3 @@ export const fetchNoteById = async (id: number) => {
   })
   return data;
 }
-
-export const getFilter = async (categoryId?: string) => {
-  const response = await axios.get<Note>('/notes', {
-    params: { categoryId }
-  });
-  return response.data;
-}
