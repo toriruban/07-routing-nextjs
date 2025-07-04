@@ -6,7 +6,8 @@ import { FetchNotesResponse } from '@/lib/api';
 import NoteList from '@/components/NoteList/NoteList';
 import Pagination from '@/components/Pagination/Pagination';
 import SearchBox from '@/components/SearchBox/SearchBox';
-import NoteModal from '@/components/NoteModal/NoteModal';
+import Modal from '@/components/Modal/Modal';
+import NoteForm from '@/components/NoteForm/NoteForm';
 import css from './NotesClient.module.css';
 import { useDebounce } from 'use-debounce';
 
@@ -53,7 +54,10 @@ const NotesClient = ({ initialData, tag }: NotesClientProps) => {
         />
       )}
       {isModalOpen && (
-       <NoteModal onClose={() => setModalOpen(false)} />
+       <Modal onClose={() => setModalOpen(false)} >
+           <NoteForm onClose={() => setModalOpen(false)} />
+       </Modal>
+      
       )}
     </div>
   );

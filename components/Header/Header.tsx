@@ -2,7 +2,7 @@ import Link from 'next/link';
 import TagsMenu from '../TagsMenu/TagsMenu'
 import css from '../Header/Header.module.css';
 
-const Header = async () => {
+const Header = () => {
     return (
         <header className={ css.header }>
         <Link href="/" aria-label="Home">
