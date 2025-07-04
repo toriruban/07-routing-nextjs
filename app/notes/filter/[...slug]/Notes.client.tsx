@@ -23,7 +23,7 @@ const NotesClient = ({ initialData, tag }: NotesClientProps) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const { data } = useQuery<FetchNotesResponse>({
-    queryKey: ['notes', debouncedSearch, page],
+    queryKey: ['notes', debouncedSearch, page, tag],
     queryFn: () => fetchNotes({search: debouncedSearch, page, tag}),
     placeholderData: keepPreviousData,
     initialData,
