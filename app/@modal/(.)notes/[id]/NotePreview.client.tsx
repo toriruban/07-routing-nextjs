@@ -1,5 +1,4 @@
 'use client'
-
 import { useParams, useRouter } from 'next/navigation';
 import { Note } from '@/types/note';
 import css from './NotePreview.module.css';
@@ -9,11 +8,11 @@ import Modal from '@/components/Modal/Modal';
 
 const NotePreviewClient = () =>{
   const { id } = useParams();
-  const NoteId = Number(id)
+  const noteId = Number(id)
   const router = useRouter();
   const { data: note, isLoading, isError } = useQuery<Note>({
-    queryKey: ['note', NoteId],
-    queryFn: () => fetchNoteById(NoteId)
+    queryKey: ['note', noteId],
+    queryFn: () => fetchNoteById(noteId)
   });
   const handleClose = () => router.back();
   return (
