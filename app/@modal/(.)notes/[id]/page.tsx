@@ -11,11 +11,11 @@ const NotePreviewPage = async ({ params } : Props) => {
     const queryClient = new QueryClient();
     queryClient.prefetchQuery({
         queryKey: ['note', noteId],
-        queryFn: () => fetchNoteById(noteId)
+        queryFn: () => fetchNoteById(noteId),
     })
     return(
         <HydrationBoundary state={dehydrate(queryClient)}>
-            <NotePreviewClient />
+            <NotePreviewClient id={noteId}/>
         </HydrationBoundary>
     )}
 export default NotePreviewPage;
